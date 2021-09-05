@@ -9,7 +9,7 @@ import java.io.File
 
 fun main() {
     // TODO change this
-    File("hapiprotoconverter\\sampledata\\").listFiles()!!
+    File("generator\\sampledata\\").listFiles()!!
         .filter {
             it.name.startsWith("valueset-") &&
                     !it.name.startsWith("valueset-extensions-") &&
@@ -26,7 +26,7 @@ fun main() {
             }
         }
     // TODO move this to a different folder?
-    File("hapiprotoconverter\\sampledata\\").listFiles()!!
+    File("generator\\sampledata\\").listFiles()!!
         .filter { it.name.endsWith(".profile.json") }
         .forEach {
             val def =
@@ -41,12 +41,11 @@ fun main() {
                 Class.forName(ClassName(hapiPackage, def.id.value.capitalizeFirst()).reflectionName())
 
                 Class.forName(ClassName(protoPackage, def.id.value.capitalizeFirst()).reflectionName())
-                CompositeCodegen.generate(def, File("hapiprotoconverter\\src\\main\\java"))
+                CompositeCodegen.generate(def, File("converter\\src\\main\\java"))
             } catch (e: Exception) {
                 if (e is ClassNotFoundException) {
                     println("${def.id.value} Class not found")
                 } else {
-                    //          throw e
                     println(def.name.value)
                 }
             }

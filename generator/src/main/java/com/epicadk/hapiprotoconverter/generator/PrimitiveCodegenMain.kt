@@ -7,7 +7,7 @@ import java.io.File
 
 fun main() {
     for (x in primitiveTypeList) {
-        val file = File("hapiprotoconverter\\src\\main\\java")
+        val file = File("converter\\src\\main\\java")
         // This is temp will parse files
         PrimitiveCodegen.generate(
             StructureDefinition.newBuilder()
