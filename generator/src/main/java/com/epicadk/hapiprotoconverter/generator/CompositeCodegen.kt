@@ -222,18 +222,18 @@ object CompositeCodegen {
 }
 
 data class BackBoneElementData(
-    val protoBuilder: FunSpec.Builder,
-    val protoName: kotlin.String,
-    val hapiBuilder: FunSpec.Builder,
-    val hapiName: kotlin.String
+  val protoBuilder: FunSpec.Builder,
+  val protoName: kotlin.String,
+  val hapiBuilder: FunSpec.Builder,
+  val hapiName: kotlin.String
 )
 
 data class HapiProtoFunPair(val protoBuilder: FunSpec.Builder, val hapiBuilder: FunSpec.Builder)
 
 internal fun getHapiProtoConverterFuncPair(
-    funcName: kotlin.String,
-    protoClass: ClassName,
-    hapiClass: ClassName
+  funcName: kotlin.String,
+  protoClass: ClassName,
+  hapiClass: ClassName
 ): HapiProtoFunPair {
 
     return HapiProtoFunPair(

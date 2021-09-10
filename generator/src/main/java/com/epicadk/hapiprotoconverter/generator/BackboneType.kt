@@ -5,10 +5,10 @@ import com.google.fhir.r4.core.Patient
 import com.squareup.kotlinpoet.FunSpec
 
 internal fun handleBackBoneElementTypes(
-    element: ElementDefinition,
-    hapiBuilder: FunSpec.Builder,
-    protoBuilder: FunSpec.Builder,
-    backboneElementMap: MutableMap<String, BackBoneElementData>
+  element: ElementDefinition,
+  hapiBuilder: FunSpec.Builder,
+  protoBuilder: FunSpec.Builder,
+  backboneElementMap: MutableMap<String, BackBoneElementData>
 ) {
     val (toProtoBuilder, toHapiBuilder) =
         getHapiProtoConverterFuncPair(

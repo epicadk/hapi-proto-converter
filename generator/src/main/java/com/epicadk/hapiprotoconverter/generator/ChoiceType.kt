@@ -15,11 +15,11 @@ import com.squareup.kotlinpoet.MemberName
  * @returns a list of FunctionBuilders that convert [element] from hapi to proto and vice versa
  */
 internal fun handleChoiceType(
-    element: ElementDefinition,
-    hapiBuilder: FunSpec.Builder,
-    protoBuilder: FunSpec.Builder,
-    fileBuilder: FileSpec.Builder,
-    backboneElementMap: MutableMap<String, BackBoneElementData>
+  element: ElementDefinition,
+  hapiBuilder: FunSpec.Builder,
+  protoBuilder: FunSpec.Builder,
+  fileBuilder: FileSpec.Builder,
+  backboneElementMap: MutableMap<String, BackBoneElementData>
 ): List<FunSpec> {
     val (elementToProtoBuilder, elementToHapiBuilder) =
         getHapiProtoConverterFuncPair(

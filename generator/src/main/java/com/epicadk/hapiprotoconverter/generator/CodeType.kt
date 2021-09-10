@@ -38,11 +38,11 @@ private const val uriCommon =
 
 // TODO Possible alternative -> MAP all code Types instead of relying on the valueOf method
 internal fun handleCodeType(
-    element: ElementDefinition,
-    hapiBuilder: FunSpec.Builder,
-    protoBuilder: FunSpec.Builder,
-    protoName: kotlin.String,
-    backboneElementMap: MutableMap<kotlin.String, BackBoneElementData>
+  element: ElementDefinition,
+  hapiBuilder: FunSpec.Builder,
+  protoBuilder: FunSpec.Builder,
+  protoName: kotlin.String,
+  backboneElementMap: MutableMap<kotlin.String, BackBoneElementData>
 ) {
     val isSingle = element.max.value == "1"
     val isCommon =

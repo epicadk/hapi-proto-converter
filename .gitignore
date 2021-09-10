@@ -8,3 +8,4 @@ gradle-app.setting
 !gradle-wrapper.jar
 
 .gradletasknamecache
+/generator/generator_data/

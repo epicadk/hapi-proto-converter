@@ -7,10 +7,10 @@ import com.squareup.kotlinpoet.FunSpec
 import com.squareup.kotlinpoet.MemberName
 
 internal fun handleOtherType(
-    element: ElementDefinition,
-    hapiBuilder: FunSpec.Builder,
-    protoBuilder: FunSpec.Builder,
-    fileBuilder: FileSpec.Builder
+  element: ElementDefinition,
+  hapiBuilder: FunSpec.Builder,
+  protoBuilder: FunSpec.Builder,
+  fileBuilder: FileSpec.Builder
 ) {
     val isSingle = element.max.value == "1"
     val toProto =

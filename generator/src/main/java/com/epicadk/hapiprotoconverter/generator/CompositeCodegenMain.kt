@@ -9,7 +9,7 @@ import java.io.File
 
 fun main() {
     // TODO change this
-    File("generator\\sampledata\\").listFiles()!!
+    File("generator\\generator_data\\").listFiles()!!
         .filter {
             it.name.startsWith("valueset-") &&
                     !it.name.startsWith("valueset-extensions-") &&
@@ -26,7 +26,7 @@ fun main() {
             }
         }
     // TODO move this to a different folder?
-    File("generator\\sampledata\\").listFiles()!!
+    File("generator\\generator_data\\").listFiles()!!
         .filter { it.name.endsWith(".profile.json") }
         .forEach {
             val def =
@@ -53,14 +53,5 @@ fun main() {
     }
 }
 
-// profiles that cannot be generated ( apart from -genetics.json profilesi )
-// Profile for Catalog
-// CDS Hooks GuidanceResponse
-// CDS Hooks Service PlanDefinition
-// Clinical Document
 // TODO - Composition
-// CQF-Questionnaire
-// DataElement constraint on ElementDefinition data type
-// Family member history for genetics analysis
-// Profile for HLA Genotyping Results
 // TODO MessageDefinition - Done

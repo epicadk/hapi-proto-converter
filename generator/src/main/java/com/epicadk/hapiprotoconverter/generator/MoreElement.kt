@@ -81,8 +81,8 @@ internal fun ElementDefinition.getBackBoneHapiClass(data: BackBoneElementData?):
 
 /** get ClassName for Code protoClass */
 internal fun ElementDefinition.getProtoCodeClass(
-    outerDataTypeName: String,
-    data: BackBoneElementData?
+  outerDataTypeName: String,
+  data: BackBoneElementData?
 ): ClassName {
     return ClassName(
         protoPackage,

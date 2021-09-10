@@ -50,7 +50,7 @@ object PrimitiveCodegen {
         // builder for the file that will contain the converter object
         val fileBuilder =
             FileSpec.builder(
-                "com.google.android.fhir.hapiprotoconverter.generated",
+                converterPackage,
                 "${protoName}Converter"
             )
         val converterSpecBuilder = TypeSpec.objectBuilder("${protoName}Converter")
@@ -214,10 +214,10 @@ object PrimitiveCodegen {
     }
 
     private fun FunSpec.Builder.addProtoStatement(
-        param: String,
-        method: String,
-        check: String,
-        vararg args: Any
+      param: String,
+      method: String,
+      check: String,
+      vararg args: Any
     ) {
         this.addStatement("if (has$check()) protoValue.$method", *args, param)
     }
