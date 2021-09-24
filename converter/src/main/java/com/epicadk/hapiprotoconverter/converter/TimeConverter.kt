@@ -1,6 +1,8 @@
 // contains functions that convert between the hapi and proto representations of time
 package com.epicadk.hapiprotoconverter.converter
 
+import com.epicadk.hapiprotoconverter.converter.ExtensionConverter.toHapi
+import com.epicadk.hapiprotoconverter.converter.ExtensionConverter.toProto
 import com.google.fhir.r4.core.Time
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
@@ -16,6 +18,7 @@ public object TimeConverter {
     val protoValue = Time.newBuilder()
     if (hasValue()) protoValue.setValueUs(LocalTime.parse(value).toNanoOfDay() / 1000)
     if (hasValue()) protoValue.setPrecisionValue(getTimePrecision(value))
+    if (hasExtension()) protoValue.addAllExtension(extension.map { it.toProto() })
     return protoValue.build()
   }
 
@@ -25,6 +28,7 @@ public object TimeConverter {
   public fun Time.toHapi(): TimeType {
     val hapiValue = TimeType()
     hapiValue.value = LocalTime.ofNanoOfDay(valueUs * 1000).format(DateTimeFormatter.ISO_LOCAL_TIME)
+    if (extensionCount > 0) hapiValue.setExtension(extensionList.map { it.toHapi() })
     return hapiValue
   }
 
