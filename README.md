@@ -6,6 +6,5 @@ The base types can be further classified into Data types and Primitive types. Pr
 - Proper performance testing
 -	DomainResource.Contained element -> Handled differently in Fhir protos and Hapi structs
 -	XHTML type elements -> Handled differently in Fhir protos and Hapi structs
--	Extensions on Primitive types (Done manually currently) -> Will be fixed with gradle task automation
 -	Resource type elements -> Handled differently in Fhir protos and Hapi structs
 
