@@ -198,6 +198,11 @@ object PrimitiveCodegen {
                 toHapiBuilder.addStatement("hapiValue.value = value")
             }
         }
+        // add extensions
+        toProtoBuilder.addStatement("if (hasExtension()) protoValue.addAllExtension(extension.map { it.toProto() })")
+        toHapiBuilder.addStatement("if (extensionCount > 0) hapiValue.setExtension(extensionList.map { it.toHapi() })")
+        fileBuilder.addImport("$converterPackage.ExtensionConverter", "toProto")
+        fileBuilder.addImport("$converterPackage.ExtensionConverter", "toHapi")
         toProtoBuilder.addStatement("return protoValue.build()")
         toHapiBuilder.addStatement("return hapiValue")
         functionsList.add(0, toProtoBuilder.build())

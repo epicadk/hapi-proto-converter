@@ -2,6 +2,8 @@
 package com.epicadk.hapiprotoconverter.converter
 
 import ca.uhn.fhir.model.api.TemporalPrecisionEnum
+import com.epicadk.hapiprotoconverter.converter.ExtensionConverter.toHapi
+import com.epicadk.hapiprotoconverter.converter.ExtensionConverter.toProto
 import com.google.fhir.r4.core.Date
 import java.time.Instant
 import java.util.TimeZone
@@ -16,6 +18,7 @@ public object DateConverter {
     if (hasTime()) protoValue.setTimezone(timeZone.id)
     if (hasValue()) protoValue.setValueUs(value.time)
     protoValue.precision = precision.toProtoPrecision()
+    if (hasExtension()) protoValue.addAllExtension(extension.map { it.toProto() })
     return protoValue.build()
   }
 
@@ -27,6 +30,7 @@ public object DateConverter {
     hapiValue.timeZone = TimeZone.getTimeZone(timezone)
     hapiValue.value = java.util.Date.from(Instant.ofEpochMilli(valueUs))
     hapiValue.precision = precision.toHapiPrecision()
+    if (extensionCount > 0) hapiValue.setExtension(extensionList.map { it.toHapi() })
     return hapiValue
   }
 

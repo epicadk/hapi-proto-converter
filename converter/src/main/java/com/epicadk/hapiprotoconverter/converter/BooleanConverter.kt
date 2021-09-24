@@ -1,6 +1,8 @@
 // contains functions that convert between the hapi and proto representations of boolean
 package com.epicadk.hapiprotoconverter.converter
 
+import com.epicadk.hapiprotoconverter.converter.ExtensionConverter.toHapi
+import com.epicadk.hapiprotoconverter.converter.ExtensionConverter.toProto
 import com.google.fhir.r4.core.Boolean
 import org.hl7.fhir.r4.model.BooleanType
 
@@ -11,6 +13,7 @@ public object BooleanConverter {
   public fun BooleanType.toProto(): Boolean {
     val protoValue = Boolean.newBuilder()
     if (hasValue()) protoValue.setValue(value)
+    if (hasExtension()) protoValue.addAllExtension(extension.map { it.toProto() })
     return protoValue.build()
   }
 
@@ -20,6 +23,7 @@ public object BooleanConverter {
   public fun Boolean.toHapi(): BooleanType {
     val hapiValue = BooleanType()
     hapiValue.value = value
+    if (extensionCount > 0) hapiValue.setExtension(extensionList.map { it.toHapi() })
     return hapiValue
   }
 }
