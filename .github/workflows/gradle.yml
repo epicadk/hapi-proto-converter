@@ -23,7 +23,7 @@ jobs:
       run: chmod +x ./gradlew
       
     - name: Export variables 
-      run: export _JAVA_OPTIONS="-Xms2g -Xmx2g" 
+      run: export _JAVA_OPTIONS="-Xms4g -Xmx4g" 
       
     - name: Build with Gradle
       run: ./gradlew :converter:build
