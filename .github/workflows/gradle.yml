@@ -23,4 +23,5 @@ jobs:
       run: chmod +x ./gradlew
       
     - name: Build with Gradle
-      run: ./gradlew :converter:build
+      run:  export _JAVA_OPTIONS="-Xms4000m -Xmx8000m" 
+          ./gradlew :converter:build
