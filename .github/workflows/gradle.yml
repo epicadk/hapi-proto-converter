@@ -22,6 +22,8 @@ jobs:
     - name: Make files executable
       run: chmod +x ./gradlew
       
+    - name: Export variables 
+      run: export _JAVA_OPTIONS="-Xms2g -Xmx2g" 
+      
     - name: Build with Gradle
-      run:  export _JAVA_OPTIONS="-Xms4000m -Xmx8000m" 
-          ./gradlew :converter:build
+      run: ./gradlew :converter:build
